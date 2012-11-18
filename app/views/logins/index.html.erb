@@ -1,0 +1,37 @@
+<div class="page-header">
+  <%= link_to new_login_path, :class => 'btn btn-primary' do %>
+    <i class="icon-plus icon-white"></i>
+    New Login
+  <% end %>
+  <h1>Logins</h1>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Ip address</th>
+      <th>User</th>
+      <th>Status</th>
+      <th>Started at</th>
+      <th>Ended at</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @logins.each do |login| %>
+    <tr>
+      <td><%= login.ip_address %></td>
+      <td><%= login.user_id %></td>
+      <td><%= login.status %></td>
+      <td><%= login.started_at %></td>
+      <td><%= login.ended_at %></td>
+      <td><%= link_to 'Show', login %></td>
+      <td><%= link_to 'Edit', edit_login_path(login) %></td>
+      <td><%= link_to 'Destroy', login, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

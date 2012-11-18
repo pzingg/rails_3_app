@@ -1,0 +1,37 @@
+<div class="page-header">
+  <%= link_to users_path, :class => 'btn' do %>
+    <i class="icon-list-alt"></i>
+    Back
+  <% end %>
+  <%= link_to edit_user_path(@user), :class => 'btn btn-primary' do %>
+    <i class="icon-pencil icon-white"></i>
+    Edit
+  <% end %>
+  <h1>User <%= @user.account_number %></h1>
+</div>
+
+<dl>
+  <dt>Account Number:</dt>
+  <dd><%= @user.account_number %></dd>
+
+  <dt>Username:</dt>
+  <dd><%= @user.username %></dd>
+
+  <dt>Email:</dt>
+  <dd><%= @user.email %></dd>
+
+  <dt>First Name:</dt>
+  <dd><%= @user.first_name %></dd>
+
+  <dt>Last Name:</dt>
+  <dd><%= @user.last_name %></dd>
+
+  <dt>Status:</dt>
+  <dd><%= @user.status %></dd>
+
+  <dt>Roles:</dt>
+  <dd><%= @user.roles %></dd>
+
+  <dt>Session Count:</dt>
+  <dd><%= @user.session_count %></dd>
+</dl>

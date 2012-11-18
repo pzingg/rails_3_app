@@ -1,0 +1,29 @@
+<div class="page-header">
+  <%= link_to logins_path, :class => 'btn' do %>
+    <i class="icon-list-alt"></i>
+    Back
+  <% end %>
+  <%= link_to edit_login_path(@login), :class => 'btn btn-primary' do %>
+    <i class="icon-pencil icon-white"></i>
+    Edit
+  <% end %>
+  <h1>Login</h1>
+</div>
+
+<dl>
+  <dt>Ip Address:</dt>
+  <dd><%= @login.ip_address %></dd>
+
+  <dt>User:</dt>
+  <dd><%= @login.user_id %></dd>
+
+  <dt>Status:</dt>
+  <dd><%= @login.status %></dd>
+
+  <dt>Started at:</dt>
+  <dd><%= @login.started_at %></dd>
+
+  <dt>Ended at:</dt>
+  <dd><%= @login.ended_at %></dd>
+
+</dl>

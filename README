@@ -1,0 +1,76 @@
+# rbenv and gemset quick start
+# See also: https://gist.github.com/2407918
+
+# install rbenv
+$ git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
+
+# set up PATH and eval stuff according to
+# https://github.com/sstephenson/rbenv
+
+# install ruby-build and rbenv-gemset plugins
+$ git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+$ git clone git://github.com/jamis/rbenv-gemset.git ~/.rbenv/plugins/rbenv-gemset
+
+# install a ruby and make it global
+$ rbenv install 1.9.3-p327
+$ rbenv rehash
+$ rbenv global 1.9.3-p327
+
+# test result
+$ rbenv global
+1.9.3-p327
+
+# optional: set up an rbenv gemset
+# cd to a folder (either rails root or above, if shared by multiple apps)
+$ cd 
+$ mkdir rails3
+$ cd rails3
+$ rbenv gemset create rails-3.2.9
+$ echo "rails-3.2.9" > .rbenv-gemsets
+
+# test result
+$ rbenv gemset active
+rails-3.2.9 global
+
+# install bundler gem and prepare binstubs
+$ gem install bundler
+
+# create a rails app folder, put a bootstrapping Gemfile in it and install rails gem
+$ mkdir mynewapp
+$ cd mynewapp
+$ echo "source :rubygems" > Gemfile-bs
+$ echo "gem 'rails', '3.2.9'" >> Gemfile-bs
+$ cp Gemfile-bs Gemfile
+
+# if using rbenv gemset (rails and other gems go into .rbenv subdirectory)
+$ bundle install
+
+# if not using rbenv gemset (rails and other gems go into app subdirectory)
+$ bundle install --path ./vendor/bundle
+
+# now create rails app, overwriting bootstrap Gemfile
+$ bundle exec rails new . -f --skip-bundle
+
+# remove README.rdoc created by rails
+
+# add Twitter Bootstrap support to Gemfile
+# see https://github.com/seyhunak/twitter-bootstrap-rails
+# gem 'therubyracer'
+# gem 'less-rails'
+# gem 'twitter-bootstrap-rails'
+
+# or this
+# see https://github.com/decioferreira/bootstrap-generators
+# gem 'simple_form'
+# gem 'bootstrap-generators'
+$ bundle
+$ bundle exec rails g bootstrap:install --stylesheet-engine=scss
+
+# now try creating user scaffold
+$ bundle exec rails g scaffold user account_number:string username:string email:string first_name:string last_name:string status:string roles:string password_digest:string
+
+# customize user.rb model with has_secure_password
+# change password_digest in user views to password, password_confirmation
+
+# add admin user to generated migration in seeds.rb
+

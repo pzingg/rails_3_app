@@ -1,0 +1,4 @@
+Application stub that:
+
+1. Uses simple authentication methods
+2. Tracks user logins by time and IP address
